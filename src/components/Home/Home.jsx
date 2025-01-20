@@ -1,7 +1,9 @@
+import Header from "../Header/Header";
 
 const Home = () => {
+    console.log("Home");
   return (
-    <div>Home</div>
+    <Header text = "Home"/>
   )
 }
 

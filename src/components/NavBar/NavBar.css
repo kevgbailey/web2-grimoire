@@ -11,5 +11,14 @@
     height: auto;
     flex-direction: row;
     padding: 1em;
+    justify-content: space-between;
+}
+
+.nav-items {
+    display: flex;
+    right: 0;
 }
   
+.nav-name{
+    display: flex;
+}

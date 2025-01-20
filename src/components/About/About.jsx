@@ -1,8 +1,12 @@
+import Header from "../Header/Header";
 
 const About = () => {
+  console.log("About");
   return (
-    <div>About</div>
-  )
-}
+    <div>
+      <Header text = "About"/>
+    </div>
+  );
+};
 
-export default About
+export default About;
