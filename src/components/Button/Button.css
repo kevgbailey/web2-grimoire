@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Jolly-Lodger';
+    src: url(../../assets/fonts/JollyLodger-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.button-root{
+    font-family: 'Jolly-Lodger';
+    background-color: #8e4ccc;
+    border: none;
+    color: #F3E9FF;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-size: 40px;
+    padding: 20px;
+    border-radius: 7px;
+
+}
+
+.button-root:hover{
+    background-color: #6e3aa7;
+}

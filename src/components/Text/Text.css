@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Jolly-Lodger';
+    src: url(../../assets/fonts/JollyLodger-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.text-root{
+    font-family: 'Jolly-Lodger';
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
