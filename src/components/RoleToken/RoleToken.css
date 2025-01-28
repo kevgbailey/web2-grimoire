@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Dumbledor';
+    src: url(../../assets/fonts/dum1.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.role-token-root{
+ font-family: "Dumbledor";
+ font-weight: "bold";
+}
