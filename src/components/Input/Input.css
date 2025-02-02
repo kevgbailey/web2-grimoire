@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Mansalva';
+    src: url(../../assets/fonts/Mansalva-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.input-root {
+    font-family: Mansalva;
+    color: black;
+    font-size: 2rem;
+    background: #EFEFEF;
+    border: 4px solid #858485;
+    border-radius: 5px;
+    padding: 10px;
+    width: 20vw;
+    margin: 10px;
+}
+
+.input-root:focus {
+    outline: none;
+    border: 4px solid #8E4CCC;
+}
+

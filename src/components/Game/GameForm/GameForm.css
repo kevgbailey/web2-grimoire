@@ -1,0 +1,104 @@
+.role-token-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: left;
+  }
+
+    .role-token {
+      width: 250px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .role-token div {
+      white-space: normal;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+
+.role-token-root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.token svg circle{
+  background-color: red;
+  position: relative;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.token svg span:hover {
+   box-shadow: 0 0 10px 5px orange;
+}
+
+/* Style the range slider track */
+.custom-range {
+  -webkit-appearance: none;
+  width: 90%;
+  height: 1px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  opacity: .7;
+  transition: opacity 0.2s;
+}
+
+.custom-range::-webkit-slider-thumb:hover,
+.custom-range::-webkit-slider-thumb:focus {
+  opacity: 1;
+  transform: scale(1.5); /* Scale up the slider on hover/focus */
+}
+
+/* Style the range slider thumb for WebKit browsers */
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  background-color: #420075; /* Change this to your desired color */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .5);
+  border: 4px solid #efe3ff;
+}
+
+.custom-range::-webkit-slider-thumb:hover {
+  background-color: #420075; /* Change this to your desired hover color */
+}
+
+/* Style the range slider track for WebKit browsers */
+.custom-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 40px;
+  background: #cdb5da;
+  border-radius: 5px;
+}
+
+/* Style the range slider thumb for Mozilla browsers */
+.custom-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #7a7a7a; /* Change this to your desired color */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.custom-range::-moz-range-thumb:hover {
+  background-color: #6e6e6e; /* Change this to your desired hover color */
+}
+
+/* Style the range slider track for Mozilla browsers */
+.custom-range::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+}

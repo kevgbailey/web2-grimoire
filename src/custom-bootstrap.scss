@@ -1,0 +1,31 @@
+// Import Bootstrap functions and variables
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+// Customize Bootstrap theme colors
+$primary: #272427;  // Custom primary color (orange)
+$secondary: hsl(282, 31%, 11%);
+$success: #8ae9a0;
+$danger: #8e000e;
+$warning: #d4ad37;
+$info: #0392a8;
+$light: #f8f9fa;
+$dark: #343a40;
+$custom-color: #ff5733;
+
+// Add custom colors to Bootstrap theme
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "danger": $danger,
+  "warning": $warning,
+  "info": $info,
+  "light": $light,
+  "dark": $dark,
+  "custom-blue": #0077ff, // Add a completely new color
+  "custom-purple": #8000ff
+);
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";

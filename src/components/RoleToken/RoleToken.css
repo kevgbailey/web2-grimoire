@@ -8,4 +8,19 @@
 .role-token-root{
  font-family: "Dumbledor";
  font-weight: "bold";
+ display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    padding: 0;
+    margin: 0;
 }
+
+.role-token-root svg:hover circle {
+    fill: #cbb087;     /* Hover color */
+  }
+
+  .role-token-root svg:click circle {
+    fill: #cbb087;     /* Hover color */
+  }

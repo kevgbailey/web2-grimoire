@@ -21,7 +21,6 @@ const iconMapper = {
     20: "Scarlet Woman Icon.png",
     21: "Baron Icon.png",
     22: "Imp Icon.png",
-    // Add more roles as needed
 };
 
 export default iconMapper;

@@ -5,6 +5,8 @@ import About from './components/About/About'
 import Home from './components/Home/Home'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import GameForm from './components/Game/GameForm/GameForm'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
 
@@ -12,12 +14,14 @@ function App() {
     <>
     <Router>
     <NavBar />
-    <Routes>
-      <Route path="/about" element={<About/>} />
-      <Route path="/" element={<Home/>} />
-      <Route path="*" element={<PageNotFound/>} />
-      <Route path="/play" element = {<GameForm/>} />
-    </Routes>
+    <div className="body-content">
+      <Routes>
+        <Route path="/about" element={<About/>} />
+        <Route path="/" element={<Home/>} />
+        <Route path="*" element={<PageNotFound/>} />
+        <Route path="/play" element = {<GameForm/>} />
+      </Routes>
+    </div>
     </Router>
     </>
   )

@@ -4,23 +4,28 @@ import Header from "../Header/Header";
 
 const NavBar = () => {
   return (
-    <div className="side-nav">
-      <Link to="/" className="nav-name">
-        <img src="../assets/logo.png" alt="Logo" />
-        <Header text="Grimoire Assistant" />
-      </Link>
-      <div className="nav-links">
-        <nav className="nav-items">
-          <Link to="/">
-            <Header text="Home" />
-          </Link>
-          <Link to="/about">
-            <Header text="About" />
-          </Link>
-        </nav>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div className="container-fluid">
+        <Link to="/" className="navbar-brand">
+          <img src="../assets/logo.png" alt="Logo" />
+          <Header text="Grimoire Assistant" />
+        </Link>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about" className="nav-link">
+                About
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-      {/* Add your navigation items here */}
-    </div>
+    </nav>
   );
 };
 
