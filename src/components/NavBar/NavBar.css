@@ -1,16 +1,11 @@
 .side-nav {
-    display: flex;
-    justify-content: center;
     top: 0;
-    gap: 1em;
     background-color: #8e4ccc;
     position: fixed;
     left: 0;
     width: 100%;
-    height: auto;
     flex-direction: row;
-    padding: 2em;
-    justify-content: space-betweenq;
+    height: 8.5rem;
 }
 
 .nav-items {
@@ -20,4 +15,13 @@
   
 .nav-name{
     display: flex;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-item {
+    list-style: none;
 }

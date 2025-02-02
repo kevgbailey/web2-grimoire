@@ -14,7 +14,7 @@ const Home = () => {
     <div className="home-root">
       <Header text="Home" className="home-header" />
       <Text text={welcomeText} className="home-text" />
-      <Link to="/play">
+      <Link to="/play" className="text-decoration-none">
         <Button
           text="Play"
           className="home-button"
