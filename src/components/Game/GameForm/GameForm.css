@@ -1,58 +1,65 @@
+@font-face {
+  font-family: 'PlayFair';
+  src: url(../../assets/fonts/PlayFair) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .role-token-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0px;
-    justify-content: left;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+  justify-content: left;
+}
 
-    .role-token {
-      width: 250px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  
-    .role-token div {
-      white-space: normal;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
+.role-token {
+  width: 250px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-.role-token-root{
+.role-token div {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.role-token-root {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.token svg circle{
+.token svg circle {
   background-color: red;
   position: relative;
   transition: box-shadow 0.3s ease-in-out;
 }
 
 .token svg span:hover {
-   box-shadow: 0 0 10px 5px orange;
+  box-shadow: 0 0 10px 5px orange;
 }
 
 /* Style the range slider track */
 .custom-range {
   -webkit-appearance: none;
-  width: 90%;
+  width: 60rem;
   height: 1px;
   background: #ddd;
-  border-radius: 5px;
+  border-radius: 50%;
   outline: none;
-  opacity: .7;
   transition: opacity 0.2s;
 }
 
 .custom-range::-webkit-slider-thumb:hover,
 .custom-range::-webkit-slider-thumb:focus {
   opacity: 1;
-  transform: scale(1.5); /* Scale up the slider on hover/focus */
+  transform: scale(1.75);
+  /* Scale up the slider on hover/focus */
 }
 
 /* Style the range slider thumb for WebKit browsers */
@@ -61,7 +68,8 @@
   appearance: none;
   width: 40px;
   height: 40px;
-  background-color: #420075; /* Change this to your desired color */
+  background-color: #8e4ccc;
+  /* Change this to your desired color */
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -70,7 +78,8 @@
 }
 
 .custom-range::-webkit-slider-thumb:hover {
-  background-color: #420075; /* Change this to your desired hover color */
+  background-color: #420075;
+  /* Change this to your desired hover color */
 }
 
 /* Style the range slider track for WebKit browsers */
@@ -78,21 +87,23 @@
   width: 100%;
   height: 40px;
   background: #cdb5da;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 /* Style the range slider thumb for Mozilla browsers */
 .custom-range::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  background-color: #7a7a7a; /* Change this to your desired color */
+  background-color: #7a7a7a;
+  /* Change this to your desired color */
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .custom-range::-moz-range-thumb:hover {
-  background-color: #6e6e6e; /* Change this to your desired hover color */
+  background-color: #6e6e6e;
+  /* Change this to your desired hover color */
 }
 
 /* Style the range slider track for Mozilla browsers */
@@ -101,4 +112,26 @@
   height: 8px;
   background: #ddd;
   border-radius: 5px;
+}
+
+.number {
+  font-size: 7rem;
+  padding-bottom: 3rem;
+  padding-top: 2rem;
+}
+
+.description {
+  font-family: "PlayFair";
+  font-size: 1.5rem;
+  padding-bottom: 2rem;
+  color:#efe3ff;
+}
+
+.spacer {
+  padding: 80px;
+}
+
+.token.disabled {
+  opacity: 0.5;
+  pointer-events: none; /* Prevent clicking */
 }
