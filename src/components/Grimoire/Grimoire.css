@@ -7,13 +7,16 @@
 
 .grimoire-dnd-root {
   position: relative;
-  width: 100%;
-  height: calc(100vh - 4rem); /* Adjust based on the height of the navbar */
+  width: 90%; /* Reduce the width */
+  height: calc(100vh - 8rem); /* Adjust based on the height of the navbar */
   border: 2px solid #444;
   background-color: #000; /* Make the background black */
+  padding-right: 2rem; /* Add padding to the right side */
+  margin: 0 auto; /* Center the container horizontally */
+  z-index: 1; /* Ensure it does not render on top of the navbar */
 }
 
-.tooltip{
+.tooltip {
   font-family: "Jolly-Lodger" !important;
   background-color: #8e4ccc !important;
   font-size: 2.5rem !important;

@@ -102,7 +102,7 @@ const Grimoire = () => {
 
   return (
     <div
-      className="grimoire-dnd-root bg-dark text-white container-fluid d-flex justify-content-center align-items-center"
+      className="grimoire-dnd-root bg-dark"
       ref={drop}
     >
       {roleAssignments.map((role) => (

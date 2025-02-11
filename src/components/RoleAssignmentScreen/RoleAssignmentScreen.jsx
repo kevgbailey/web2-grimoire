@@ -52,8 +52,8 @@ const RoleAssignmentScreen = ({ selectedRoles, playerNames }) => {
             ))}
         </div>
         <div className="d-flex justify-content-center mt-4">
-          <Button text="Reroll" onClick={rerollRoles} className="reroll-button" />
-          <Button text ="Start Game" onClick={handleStartGame} className="start-button" />
+          <Button text="Reroll" onClick={rerollRoles} className="reroll-button mx-3" />
+          <Button text ="Start Game" onClick={handleStartGame} className="start-button mx-3" />
         </div>
       </>
     );

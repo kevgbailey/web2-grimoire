@@ -1,4 +1,6 @@
 .body-content {
-  padding-top: 150px; /* Adjust this value to match the height of your navbar */
+  padding-top: 175px; /* Adjust this value to match the height of your navbar */
   padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 100px;
 }
