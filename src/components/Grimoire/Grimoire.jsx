@@ -3,11 +3,12 @@ import { useDrop, useDrag } from "react-dnd";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ItemTypes } from "../../models/ItemTypes";
+import { Tooltip } from "react-tooltip";
 import RoleToken from "../RoleToken/RoleToken";
 import "./Grimoire.css";
 import roles from "../../models/roles";
 
-const DraggableRoleToken = ({ id, left, top, role, moveToken }) => {
+const DraggableRoleToken = ({ id, left, top, role, name, moveToken }) => {
   const [{ isDragging }, drag] = useDrag(
     () => ({
       type: ItemTypes.BOX,
@@ -18,6 +19,8 @@ const DraggableRoleToken = ({ id, left, top, role, moveToken }) => {
     }),
     [id, left, top]
   );
+
+  console.log("DraggableRoleToken rendered with name:", name);
 
   return (
     <div
@@ -30,8 +33,10 @@ const DraggableRoleToken = ({ id, left, top, role, moveToken }) => {
         opacity: isDragging ? 0.5 : 1, // Fades when dragging
         cursor: "move",
       }}
+      data-tooltip-id={`tooltip-${id}`}
     >
       <RoleToken role={role} />
+      <Tooltip id={`tooltip-${id}`} content={name} className="tooltip" />
     </div>
   );
 };
@@ -41,6 +46,7 @@ DraggableRoleToken.propTypes = {
   role: PropTypes.object.isRequired,
   left: PropTypes.number.isRequired,
   top: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
   moveToken: PropTypes.func.isRequired,
 };
 
@@ -52,6 +58,7 @@ const Grimoire = () => {
 
   const [roleAssignments, setRoleAssignments] = useState(
     initialRoleAssignments.map((assignment, index) => ({
+      playerName: assignment.name,
       id: assignment.id,
       left: 100 + index * 70,
       top: 100 + index * 70,
@@ -91,6 +98,8 @@ const Grimoire = () => {
     return null;
   }
 
+  console.log("Role Assignments:", roleAssignments);
+
   return (
     <div
       className="grimoire-dnd-root bg-dark text-white container-fluid d-flex justify-content-center align-items-center"
@@ -103,6 +112,7 @@ const Grimoire = () => {
           role={getRoleById(role.id)}
           left={role.left}
           top={role.top}
+          name={role.playerName}
           moveToken={() => {}}
         />
       ))}

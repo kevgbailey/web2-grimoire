@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Jolly-Lodger';
+  src: url(../../assets/fonts/JollyLodger-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .grimoire-dnd-root {
   position: relative;
   width: 100%;
@@ -6,16 +13,11 @@
   background-color: #000; /* Make the background black */
 }
 
- {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-color: #8e4ccc;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  cursor: move;
-  user-select: none;
+.tooltip{
+  font-family: "Jolly-Lodger" !important;
+  background-color: #8e4ccc !important;
+  font-size: 2.5rem !important;
+  text-shadow: #000 0px 0px 10px !important;
+  border-radius: 10px !important;
+  box-shadow: #000 0px 0px 10px !important;
 }
