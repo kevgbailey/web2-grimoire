@@ -18,7 +18,6 @@ const Home = () => {
         <Button
           text="Play"
           className="home-button"
-          onClick={() => console.log("Play Button Clicked")}
         />
       </Link>
       <Button

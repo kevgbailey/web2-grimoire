@@ -1,0 +1,31 @@
+.about-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.about-container h1,
+.about-container h2 {
+  font-family: 'Jolly-Lodger';
+  color: #8e4ccc;
+}
+
+.about-container p,
+.about-container ul {
+  font-family: 'PlayFair';
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.about-container a {
+  color: #8e4ccc;
+  text-decoration: none;
+}
+
+.about-container a:hover {
+  text-decoration: underline;
+}

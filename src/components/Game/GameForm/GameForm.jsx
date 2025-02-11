@@ -49,7 +49,6 @@ const GameForm = () => {
     e.preventDefault();
     setPlayerNames(Array(numPlayers).fill(""));
     setRoleAmounts(roleAmountLogic(numPlayers));
-    console.log(roleAmounts);
     setStep(2);
   };
 
