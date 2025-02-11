@@ -6,9 +6,11 @@
 }
 
 .role-token-container {
+  height: 900px;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 0px;
+  gap: 10px;
   justify-content: left;
 }
 

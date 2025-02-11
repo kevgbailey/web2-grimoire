@@ -1,0 +1,21 @@
+.grimoire-dnd-root {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 4rem); /* Adjust based on the height of the navbar */
+  border: 2px solid #444;
+  background-color: #000; /* Make the background black */
+}
+
+ {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #8e4ccc;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: move;
+  user-select: none;
+}

@@ -4,7 +4,7 @@ const About = () => {
   console.log("About");
   return (
     <div>
-      <Header text = "About"/>
+      <Header text="About" />
     </div>
   );
 };

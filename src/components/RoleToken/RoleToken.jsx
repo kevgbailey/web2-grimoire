@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types'
-import './RoleToken.css'
-import iconMapper from "../../models/iconMapper.js"
+import PropTypes from "prop-types";
+import "./RoleToken.css";
+import iconMapper from "../../models/iconMapper.js";
 
 const RoleToken = ({ role, className, onClick }) => {
   let imagePath = `/src/assets/icons/${iconMapper[role.id]}`;
   return (
-    <div className={'role-token-root ' + className} onClick={onClick}>
+    <div className={"role-token-root " + className} onClick={onClick}>
       <svg viewBox="0 0 200 200" width="200" height="200">
         <defs>
           {/* Define a full circle path with radius = 50 */}
@@ -33,12 +33,12 @@ const RoleToken = ({ role, className, onClick }) => {
       </svg>
     </div>
   );
-}
+};
 
 RoleToken.propTypes = {
   role: PropTypes.object.isRequired,
   className: PropTypes.string,
   onClick: PropTypes.func,
-}
+};
 
 export default RoleToken;

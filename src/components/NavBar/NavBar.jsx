@@ -23,6 +23,11 @@ const NavBar = () => {
             <Header text="About" className="title"/>
           </Link>
         </li>
+        <li className="nav-item">
+          <Link to="/login" className="text-decoration-none pr-4">
+            <Header text="Login" className="title"/>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

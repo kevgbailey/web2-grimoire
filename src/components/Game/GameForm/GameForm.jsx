@@ -6,7 +6,34 @@ import RoleToken from "../../RoleToken/RoleToken.jsx";
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import "./GameForm.css";
+import RoleAssignmentScreen from "../../RoleAssignmentScreen/RoleAssignmentScreen.jsx";
 
+/**
+ * GameForm component handles the setup process for a game, including:
+ * - Selecting the number of players
+ * - Entering player names
+ * - Selecting roles for the game
+ * - Displaying the role assignment screen
+ *
+ * State:
+ * - step: Current step in the form process (1-4)
+ * - numPlayers: Number of players in the game
+ * - playerNames: Array of player names
+ * - selectedRoles: Array of selected role IDs
+ * - roleAmounts: Object containing the number of each role type
+ * - selectedTownsfolk: Array of selected Townsfolk role IDs
+ * - selectedOutsiders: Array of selected Outsider role IDs
+ * - selectedMinions: Array of selected Minion role IDs
+ * - selectedDemons: Array of selected Demon role IDs
+ *
+ * Handlers:
+ * - handleNumPlayersSubmit: Handles submission of the number of players
+ * - handlePlayerNamesSubmit: Handles submission of player names
+ * - handleRolesSubmit: Handles submission of selected roles
+ * - handleRoleSelection: Handles selection of a role
+ *
+ * @returns {JSX.Element} The rendered component
+ */
 const GameForm = () => {
   const [step, setStep] = useState(1);
   const [numPlayers, setNumPlayers] = useState(10);
@@ -34,7 +61,9 @@ const GameForm = () => {
 
   const handleRolesSubmit = (e) => {
     e.preventDefault();
-    // Handle the final submission
+    if(selectedRoles.length === numPlayers) {
+      setStep(4);
+    }
   };
 
   const handleRoleSelection = (roleId, category) => {
@@ -238,6 +267,11 @@ const GameForm = () => {
               className="m-5 position-fixed bottom-0"
             />
           </form>
+        </>
+      )}
+      {step === 4 && (
+        <>
+        <RoleAssignmentScreen selectedRoles={selectedRoles} playerNames={playerNames} />
         </>
       )}
     </>
