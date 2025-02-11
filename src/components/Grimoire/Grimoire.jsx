@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useDrop, useDrag } from "react-dnd";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ItemTypes } from "../../models/ItemTypes";
 import RoleToken from "../RoleToken/RoleToken";
 import "./Grimoire.css";
@@ -46,7 +46,9 @@ DraggableRoleToken.propTypes = {
 
 const Grimoire = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const initialRoleAssignments = location.state?.roleAssignments || [];
+  console.log("Initial Role Assignments:", initialRoleAssignments);
 
   const [roleAssignments, setRoleAssignments] = useState(
     initialRoleAssignments.map((roleId, index) => ({
@@ -83,6 +85,11 @@ const Grimoire = () => {
     }
     return { id: roleId, name: "Unknown Role" };
   };
+
+  if (initialRoleAssignments.length === 0) {
+    navigate("/"); // Redirect if no data is passed
+    return null;
+  }
 
   return (
     <div

@@ -151,7 +151,7 @@ const GameForm = () => {
           <Header text="Select the roles to be used in the game" />
           <form>
             <Header text={`Townsfolk: ${roleAmounts.Townsfolk}`} />
-            <div className="role-token-container d-flex flex-wrap gap-4">
+            <div className="role-token-container">
               {roles.townsfolk.map((role, index) => (
                 <div
                   className="role-token"

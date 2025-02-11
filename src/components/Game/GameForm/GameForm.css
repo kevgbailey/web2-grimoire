@@ -6,7 +6,6 @@
 }
 
 .role-token-container {
-  height: 900px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
