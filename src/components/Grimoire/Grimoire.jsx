@@ -51,10 +51,10 @@ const Grimoire = () => {
   console.log("Initial Role Assignments:", initialRoleAssignments);
 
   const [roleAssignments, setRoleAssignments] = useState(
-    initialRoleAssignments.map((roleId, index) => ({
-      id: roleId,
-      left: 100 + index * 50,
-      top: 100 + index * 50,
+    initialRoleAssignments.map((assignment, index) => ({
+      id: assignment.id,
+      left: 100 + index * 70,
+      top: 100 + index * 70,
     }))
   );
 

@@ -36,7 +36,7 @@ const RoleAssignmentScreen = ({ selectedRoles, playerNames }) => {
     const handleStartGame = () => {
         let roleAssignmentArray = [];
         for(let i = 0; i < playerNames.length; i++) {
-            roleAssignmentArray.push({name: playerNames[i], role: shuffledRoles[i]});
+            roleAssignmentArray.push({name: playerNames[i], id: shuffledRoles[i]});
         }
         navigate("/grimoire", { state: { roleAssignments: roleAssignmentArray } });
     }
