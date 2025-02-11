@@ -3,7 +3,7 @@ import "./RoleToken.css";
 import iconMapper from "../../models/iconMapper.js";
 
 const RoleToken = ({ role, className, onClick }) => {
-  let imagePath = `/src/assets/icons/${iconMapper[role.id]}`;
+  let imagePath = new URL(`../../assets/icons/${iconMapper[role.id]}`, import.meta.url).href;
   return (
     <div className={"role-token-root " + className} onClick={onClick}>
       <svg viewBox="0 0 200 200" width="200" height="200">
