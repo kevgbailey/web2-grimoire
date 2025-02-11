@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 
 const NavBar = () => {
+  const logoPath = new URL("../../assets/logo.png", import.meta.url).href;
   return (
     <nav className="side-nav d-flex justify-content-between">
       <Link
         to="/"
         className="d-flex flex-row justify-content-center align-items-center p-4 text-decoration-none"
       >
-        <img src="src/assets/logo.png" alt="Logo" />
+        <img src={logoPath} alt="Logo" />
         <Header text="Grimoire Assistant" className="title"/>
       </Link>
       <ul className="d-flex flex-row justify-content-center align-items-center p-4 gap-5 mb-0 pr-5">
