@@ -1,8 +1,13 @@
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
+import { useContext } from "react";
+import { AuthContext } from "@contexts/AuthContext/AuthContext";
 
 const NavBar = () => {
+  const authContext = useContext(AuthContext);
+  console.log(authContext);
+
   const logoPath = new URL("../../assets/logo.png", import.meta.url).href;
   return (
     <nav className="side-nav d-flex justify-content-between">
@@ -25,10 +30,21 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="nav-item">
+          {authContext.isAuthenticated ? (
+            <span onClick={() => authContext.logout()} className="text-decoration-none pr-4">
+              <Header text="Logout" className="title"/>
+            </span>
+          ) : (
+            <Link to="/login" className="text-decoration-none pr-4">
+              <Header text="Login" className="title"/>
+            </Link>
+          )}
+        </li>
+        {/* <li className="nav-item">
           <Link to="/login" className="text-decoration-none pr-4">
             <Header text="Login" className="title"/>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

@@ -14,4 +14,13 @@ export default defineConfig({
       },
     },
   },
+  resolve: {
+    alias: {
+      '@components': '/src/components',
+      '@contexts': '/src/contexts',
+      '@assets': '/src/assets',
+      '@utils': '/src/utils',
+      '@hooks': '/src/hooks',
+    }
+  }
 })
