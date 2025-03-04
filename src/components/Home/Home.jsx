@@ -3,8 +3,14 @@ import Header from "../Header/Header";
 import Text from "../Text/Text";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const Home = () => {
+  const authContext = useContext(AuthContext);
+
+  const welcomeMessage = authContext.isAuthenticated ? "Welcome, " + authContext.token.username + "!" : "Welcome to the Grimoire!";
+
   let welcomeText = "Welcome to the Grimoire! This website is not associated with the game Blood on the Clock Tower, and is only a helper to the game. Press the Play Button Below to begin.";
   const redirectToWebsite = () => {
     console.log("redirecting...");
@@ -12,7 +18,7 @@ const Home = () => {
   };
   return (
     <div className="home-root">
-      <Header text="Home" className="home-header" />
+      <Header text={welcomeMessage} className="home-header" />
       <Text text={welcomeText} className="home-text" />
       <Link to="/play" className="text-decoration-none">
         <Button

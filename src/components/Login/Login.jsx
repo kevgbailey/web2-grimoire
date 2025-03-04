@@ -1,16 +1,27 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import  { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import Button from '../Button/Button';
 import Header from '../Header/Header';
 import Input from '../Input/Input';
 import './Login.css';
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
     console.log('Logging in with', { username, password });
-    // Add login logic here
+    const loginSuccess = login(username, password);
+    if (loginSuccess) {
+      console.log('Login successful');
+      navigate('/');
+    } else {
+      console.log('Login failed');
+    }
   };
 
   return (

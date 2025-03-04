@@ -1,26 +1,36 @@
 @font-face {
-    font-family: 'Dumbledor';
-    src: url(../../assets/fonts/dum1.ttf) format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Dumbledor';
+  src: url(../../assets/fonts/dum1.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.role-token-root{
- font-family: "Dumbledor";
- font-weight: "bold";
- display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
-    padding: 0;
-    margin: 0;
+.role-token-root {
+  font-family: "Dumbledor";
+  font-weight: "bold";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .role-token-root svg:hover circle {
-    fill: #cbb087;     /* Hover color */
-  }
+  fill: #cbb087;
+  /* Hover color */
+}
 
-  .role-token-root svg:click circle {
-    fill: #cbb087;     /* Hover color */
-  }
+.role-token-root svg:click circle {
+  fill: #cbb087;
+  /* Hover color */
+}
+
+.rounded-svg {
+  clip-path: circle(50%);
+  border-radius: 50%;
+  overflow: hidden;
+}

@@ -7,6 +7,7 @@ import { Tooltip } from "react-tooltip";
 import RoleToken from "../RoleToken/RoleToken";
 import "./Grimoire.css";
 import roles from "../../models/roles";
+import { getEmptyImage } from 'react-dnd-html5-backend';
 
 const DraggableRoleToken = ({ id, left, top, role, name, moveToken }) => {
   const [{ isDragging }, drag] = useDrag(
@@ -20,7 +21,6 @@ const DraggableRoleToken = ({ id, left, top, role, name, moveToken }) => {
     [id, left, top]
   );
 
-  console.log("DraggableRoleToken rendered with name:", name);
 
   return (
     <div
@@ -30,7 +30,7 @@ const DraggableRoleToken = ({ id, left, top, role, name, moveToken }) => {
         position: "absolute",
         left,
         top,
-        opacity: isDragging ? 0.5 : 1, // Fades when dragging
+        opacity: isDragging ? 0 : 1, // Fades when dragging
         cursor: "move",
       }}
       data-tooltip-id={`tooltip-${id}`}
@@ -54,7 +54,6 @@ const Grimoire = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const initialRoleAssignments = location.state?.roleAssignments || [];
-  console.log("Initial Role Assignments:", initialRoleAssignments);
 
   const [roleAssignments, setRoleAssignments] = useState(
     initialRoleAssignments.map((assignment, index) => ({
@@ -97,8 +96,6 @@ const Grimoire = () => {
     navigate("/"); // Redirect if no data is passed
     return null;
   }
-
-  console.log("Role Assignments:", roleAssignments);
 
   return (
     <div
