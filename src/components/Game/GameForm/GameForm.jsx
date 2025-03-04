@@ -96,7 +96,7 @@ const GameForm = () => {
   };
   
   //api call found in this custom hook called useTestUser
-  const { testUsers, isLoading, error } = useTestUser(numPlayers)
+  const { testUsers, rerollUsers } = useTestUser(numPlayers);
 
   return (
     <>
@@ -124,11 +124,15 @@ const GameForm = () => {
         <>
           <div className="d-flex flex-column justify-content-center align-items-center gap-4">
             <Header text="Enter the names of the players:" />
-            <Button text = "Add Test Players" onClick={() => {
-              if (testUsers) {
-                setPlayerNames(testUsers.map((user) => user.name.first + " " + user.name.last));
-              }
-            }} />
+            <Button 
+              text="Generate Test Names"
+              onClick={() => {
+                rerollUsers();
+                if (testUsers) {
+                  setPlayerNames(testUsers.map((user) => user.name.first + " " + user.name.last));
+                }
+              }} 
+            />
             <form className="d-flex flex-column align-items-center">
               {playerNames.map((name, index) => (
                 <div key={index}>
