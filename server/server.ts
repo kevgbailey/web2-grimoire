@@ -1,12 +1,19 @@
-import express from 'express';
+import express, { Request, Response, Application } from 'express';
+import { GameController } from './controllers/GameController';
 
-const app = express();
-const port = 3000;
+const gameController = new GameController();
 
-app.get('/', (req, res) => {
+const app: Application = express();
+const port: number = 3000;
+
+app.get('/', (req: Request, res: Response): void => {
     res.send('Hello, world!');
 });
 
-app.listen(port, () => {
+app.get('/roles', (req: Request, res: Response): void => {
+    gameController.getRoles(req, res);
+});
+
+app.listen(port, (): void => {
     console.log(`Server is running on http://localhost:${port}`);
 });

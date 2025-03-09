@@ -1,14 +1,40 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "NodeNext", // Change this
-    "moduleResolution": "NodeNext", // Add this
+    "lib": ["ES2020", "DOM"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "outDir": "./dist",
-    "rootDir": "./server",
+    "rootDir": ".",
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "checkJs": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@controllers/*": ["./server/controllers/*"],
+      "@services/*": ["server/services/*"],
+      "@models/*": ["./server/models/*"],
+      "@repository/*": ["./server/repository/*"],
+      "@utils/*": ["./server/utils/*"],
+      "@components/*": ["./src/components/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@hooks/*": ["./src/hooks/*"]
+    }
   },
-  "include": ["server/**/*"]
+  "include": [
+    "src/**/*",
+    "server/**/*"
+  ],
+  "exclude": ["node_modules", "dist"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
 }
