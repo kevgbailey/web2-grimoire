@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "dev:server": "ts-node-dev --project tsconfig.json server/server.ts",
+    "dev:server": "ts-node-dev --project server/tsconfig.json server/src/app.ts",
     "build:server": "tsc",
     "start:server": "node dist/server.js"
   },

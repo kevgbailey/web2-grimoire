@@ -1,4 +1,4 @@
-import { GameRoles, RoleCategories } from '../models/roles';
+import { GameRoles, RoleCategories } from '../middleware/roles';
 
 export class GameService {
     private gameRoles: GameRoles;
