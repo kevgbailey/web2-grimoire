@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About/About';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import GameForm from './components/Game/GameForm/GameForm';
 import Grimoire from './components/Grimoire/Grimoire'; // Import Grimoire
@@ -27,7 +28,8 @@ function App() {
               <Route path="*" element={<PageNotFound />} />
               <Route path="/play" element={<GameForm />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/grimoire" element={<Grimoire initialRoleAssignments={[{name: "Kevin", id: 1}, {name: "Savannah", id: 2}]} />} /> {/* Example role assignments */}
+              <Route path="/register" element={<Register />} />
+              <Route path="/grimoire" element={<Grimoire />} />
             </Routes>
           </div>
           <Footer />

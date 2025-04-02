@@ -5,8 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "@contexts/AuthContext/AuthContext";
 
 const NavBar = () => {
-  const authContext = useContext(AuthContext);
-  console.log(authContext);
+  const { isAuthenticated, username, logout } = useContext(AuthContext);
 
   const logoPath = new URL("../../assets/logo.png", import.meta.url).href;
   return (
@@ -30,15 +29,15 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          {authContext.isAuthenticated ? (
-            <span onClick={() => authContext.logout()} className="text-decoration-none pr-4">
-              <Header text="Logout" className="title"/>
-            </span>
-          ) : (
-            <Link to="/login" className="text-decoration-none pr-4">
-              <Header text="Login" className="title"/>
-            </Link>
-          )}
+        {isAuthenticated ? (
+          <span onClick={logout} className="text-decoration-none pr-4">
+            <Header text={`Logout (${username})`} className="title"/>
+          </span>
+        ) : (
+          <Link to="/login" className="text-decoration-none pr-4">
+            <Header text="Login" className="title"/>
+          </Link>
+        )}
         </li>
         {/* <li className="nav-item">
           <Link to="/login" className="text-decoration-none pr-4">

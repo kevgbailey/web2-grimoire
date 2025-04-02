@@ -1,49 +1,29 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext } from "react";
 import PropTypes from "prop-types";
+import { useAuth } from "@hooks/useUser";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState(null);
+  const auth = useAuth();
 
-  useEffect(() => {
-    let storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      storedToken = JSON.parse(storedToken);
-      if (storedToken.expiration < Date.now()) {
-        logout();
-      } else {
-        setIsAuthenticated(true);
-        setToken(storedToken);
-      }
-    }
-  }, []);
-
-  const login = (username, password) => {
-    const now = new Date();
-    const expiration = now.setHours(now.getHours() + 1);
-    const fakeToken = {
-      username,
-      password,
-      expiration: expiration,
-    };
-    localStorage.setItem("token", JSON.stringify(fakeToken));
-    setToken(fakeToken);
-    setIsAuthenticated(true);
-    return true;
-  };
-
-  const logout = () => {
-    setIsAuthenticated(false);
-    setToken(null);
-    localStorage.removeItem("token");
-    return true;
+  const login = async (credentials) => {
+    console.log("Logging in with credentials:", credentials);
+    await auth.login(credentials);
   };
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, token, setToken, logout, login }}
+      value={{
+        isAuthenticated: auth.isAuthenticated,
+        token: auth.token,
+        username: auth.username,
+        userId: auth.userId,
+        login: login,
+        logout: auth.logout,
+        register: auth.register,
+        error: auth.error
+      }}
     >
       {children}
     </AuthContext.Provider>

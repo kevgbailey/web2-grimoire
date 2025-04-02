@@ -8,6 +8,8 @@ import Input from "../../Input/Input";
 import "./GameForm.css";
 import RoleAssignmentScreen from "../../RoleAssignmentScreen/RoleAssignmentScreen.jsx";
 import { useTestUser } from "@hooks/useTestUser";
+import { useContext } from "react";
+import { AuthContext } from "@contexts/AuthContext/AuthContext";
 
 /**
  * GameForm component handles the setup process for a game, including:
@@ -36,6 +38,7 @@ import { useTestUser } from "@hooks/useTestUser";
  * @returns {JSX.Element} The rendered component
  */
 const GameForm = () => {
+  const { userId, } = useContext(AuthContext);
   const [step, setStep] = useState(1);
   const [numPlayers, setNumPlayers] = useState(10);
   const [playerNames, setPlayerNames] = useState([]);
@@ -64,6 +67,14 @@ const GameForm = () => {
     if(selectedRoles.length === numPlayers) {
       setStep(4);
     }
+  };
+
+  const getRoleById = (roleId) => {
+    for (const category in roles) {
+      const role = roles[category].find(r => r.id === roleId);
+      if (role) return role;
+    }
+    return null;
   };
 
   const handleRoleSelection = (roleId, category) => {
@@ -283,7 +294,12 @@ const GameForm = () => {
       )}
       {step === 4 && (
         <>
-        <RoleAssignmentScreen selectedRoles={selectedRoles} playerNames={playerNames} />
+          <RoleAssignmentScreen 
+            selectedRoles={selectedRoles} 
+            playerNames={playerNames} 
+            userId={userId}
+            getRoleById={getRoleById}
+          />
         </>
       )}
     </>
