@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Header from "../Header/Header"
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import './RoleAssignmentScreen.css';
 import roles from "../../models/roles.js";
 import Button from "../Button/Button";
+import { GameContext } from "../../contexts/GameContext/GameContext";
 
 const RoleAssignmentScreen = ({ selectedRoles, playerNames, userId, getRoleById }) => {
     const [shuffledRoles, setShuffledRoles] = useState([...selectedRoles]);
     const navigate = useNavigate();
+    const { updateGameState } = useContext(GameContext);
 
     const shuffleArray = (array) => {
         for (var i = array.length - 1; i >= 0; i--) {
@@ -68,7 +70,8 @@ const RoleAssignmentScreen = ({ selectedRoles, playerNames, userId, getRoleById 
                 };
             })
         };
-        console.log(gameState);
+        
+        updateGameState(gameState);
         navigate('/grimoire', { 
             state: { 
                 gameState,

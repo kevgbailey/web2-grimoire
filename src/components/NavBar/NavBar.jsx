@@ -28,6 +28,13 @@ const NavBar = () => {
             <Header text="About" className="title"/>
           </Link>
         </li>
+        {isAuthenticated && (
+          <li className="nav-item">
+            <Link to="/history" className="text-decoration-none pr-4">
+              <Header text="History" className="title"/>
+            </Link>
+          </li>
+        )}
         <li className="nav-item">
         {isAuthenticated ? (
           <span onClick={logout} className="text-decoration-none pr-4">
@@ -39,11 +46,6 @@ const NavBar = () => {
           </Link>
         )}
         </li>
-        {/* <li className="nav-item">
-          <Link to="/login" className="text-decoration-none pr-4">
-            <Header text="Login" className="title"/>
-          </Link>
-        </li> */}
       </ul>
     </nav>
   );

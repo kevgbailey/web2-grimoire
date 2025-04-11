@@ -9,6 +9,7 @@ import Register from './components/Register/Register';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import GameForm from './components/Game/GameForm/GameForm';
 import Grimoire from './components/Grimoire/Grimoire'; // Import Grimoire
+import GameHistory from './components/GameHistory/GameHistory'; // Import GameHistory
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,6 +31,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/grimoire" element={<Grimoire />} />
+              <Route path="/history" element={<GameHistory />} />
             </Routes>
           </div>
           <Footer />
