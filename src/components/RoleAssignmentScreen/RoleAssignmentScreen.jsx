@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Header from "../Header/Header"
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import './RoleAssignmentScreen.css';
 import roles from "../../models/roles.js";
 import Button from "../Button/Button";
+import { GameContext } from "../../contexts/GameContext/GameContext";
 
-const RoleAssignmentScreen = ({ selectedRoles, playerNames }) => {
+const RoleAssignmentScreen = ({ selectedRoles, playerNames, userId, getRoleById }) => {
     const [shuffledRoles, setShuffledRoles] = useState([...selectedRoles]);
     const navigate = useNavigate();
+    const { updateGameState } = useContext(GameContext);
 
     const shuffleArray = (array) => {
         for (var i = array.length - 1; i >= 0; i--) {
@@ -34,12 +36,49 @@ const RoleAssignmentScreen = ({ selectedRoles, playerNames }) => {
     };
 
     const handleStartGame = () => {
-        let roleAssignmentArray = [];
-        for(let i = 0; i < playerNames.length; i++) {
-            roleAssignmentArray.push({name: playerNames[i], id: shuffledRoles[i]});
-        }
-        navigate("/grimoire", { state: { roleAssignments: roleAssignmentArray } });
-    }
+        const roleAssignments = playerNames.map((name, index) => ({
+            name: name,
+            id: parseInt(shuffledRoles[index])
+        }));
+
+        const game_id = Math.floor(Math.random() * 1000000);
+        const gameState = {
+            game: {
+                game_id: game_id,
+                storyteller_id: userId || 1,
+                night: 0,
+                status: 'active'
+            },
+            players: playerNames.map((name, index) => ({
+                player_id: index + 1,
+                game_id: game_id,
+                name: name,
+                role_id: parseInt(shuffledRoles[index]),
+                isDead: false,
+                drunkRole: null,
+                hasVote: true
+            })),
+            statusEffects: [],
+            roles: shuffledRoles.map(roleId => {
+                const role = getRoleById(roleId);
+                return {
+                    role_id: parseInt(roleId),
+                    name: role.name,
+                    description: role.description,
+                    night_order: null,
+                    first_night_order: null
+                };
+            })
+        };
+        
+        updateGameState(gameState);
+        navigate('/grimoire', { 
+            state: { 
+                gameState,
+                roleAssignments 
+            } 
+        });
+    };
 
     return (
       <>
@@ -61,7 +100,9 @@ const RoleAssignmentScreen = ({ selectedRoles, playerNames }) => {
 
 RoleAssignmentScreen.propTypes = {
   selectedRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  playerNames: PropTypes.arrayOf(PropTypes.string).isRequired
+  playerNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  userId: PropTypes.number,
+  getRoleById: PropTypes.func.isRequired
 }
 
 export default RoleAssignmentScreen

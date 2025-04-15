@@ -4,27 +4,27 @@ import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 import Button from "../Button/Button";
 import Header from "../Header/Header";
 import Input from "../Input/Input";
-import "./Login.css";
+import "./Register.css";
 
-const Login = () => {
-  const { login, error } = useContext(AuthContext);
+const Register = () => {
+  const { register, error } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
-      console.log('Attempting login in Login.jsx with username:', username, 'and password:', password);
-      await login({ username, password });
+      await register({ username, password });
       navigate('/');
     } catch (err) {
-      console.error('Login failed:', err);
+      console.error('Registration failed:', err);
     }
   };
+
   return (
     <div className="login-root">
-      <Header text="Login" className="login-header" />
+      <Header text="Register" className="login-header" />
       <div className="login-form">
         <Input
           value={username}
@@ -34,13 +34,14 @@ const Login = () => {
         <Input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          type="password"
           placeholder="Password"
         />
-        <Button text="Login" className="login-button" onClick={handleLogin} />
+        <Button text="Register" className="login-button" onClick={handleRegister} />
         {error && <div className="error-message">{error}</div>}
         <div className="register-link">
-          <Link to="/register" className="text-decoration-none">
-          <Header text="Don't have an account? Register here" className="title"/>
+          <Link to="/login" className="text-decoration-none">
+            Already have an account? Login here
           </Link>
         </div>
       </div>
@@ -48,4 +49,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

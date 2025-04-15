@@ -1,0 +1,36 @@
+.history-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.game-card {
+    background-color: rgba(142, 76, 204, 0.1);
+    border: 2px solid #8e4ccc;
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(142, 76, 204, 0.3);
+}
+
+.game-card h3 {
+    color: #8e4ccc;
+    margin-bottom: 1rem;
+}
+
+.game-card p {
+    color: #efe3ff;
+    margin: 0.5rem 0;
+}

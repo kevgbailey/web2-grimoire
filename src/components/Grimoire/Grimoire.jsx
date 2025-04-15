@@ -53,10 +53,11 @@ DraggableRoleToken.propTypes = {
 const Grimoire = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const initialRoleAssignments = location.state?.roleAssignments || [];
+  const gameState = location.state?.gameState;
+  const roleAssignments = location.state?.roleAssignments || [];
 
-  const [roleAssignments, setRoleAssignments] = useState(
-    initialRoleAssignments.map((assignment, index) => ({
+  const [tokens, setTokens] = useState(
+    roleAssignments.map((assignment, index) => ({
       playerName: assignment.name,
       id: assignment.id,
       left: 100 + index * 70,
@@ -70,7 +71,7 @@ const Grimoire = () => {
       const delta = monitor.getDifferenceFromInitialOffset();
       if (!delta) return;
 
-      setRoleAssignments((prev) =>
+      setTokens((prev) =>
         prev.map((token) =>
           token.id === item.id
             ? {
@@ -92,8 +93,8 @@ const Grimoire = () => {
     return { id: roleId, name: "Unknown Role" };
   };
 
-  if (initialRoleAssignments.length === 0) {
-    navigate("/"); // Redirect if no data is passed
+  if (!gameState || roleAssignments.length === 0) {
+    navigate("/");
     return null;
   }
 
@@ -102,7 +103,7 @@ const Grimoire = () => {
       className="grimoire-dnd-root bg-dark"
       ref={drop}
     >
-      {roleAssignments.map((role) => (
+      {tokens.map((role) => (
         <DraggableRoleToken
           key={role.id}
           id={role.id}

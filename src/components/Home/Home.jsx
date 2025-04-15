@@ -7,9 +7,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const Home = () => {
-  const authContext = useContext(AuthContext);
+  const { isAuthenticated, username } = useContext(AuthContext);
 
-  const welcomeMessage = authContext.isAuthenticated ? "Welcome, " + authContext.token.username + "!" : "Welcome to the Grimoire!";
+  const welcomeMessage = isAuthenticated ? "Welcome, " + username + "!" : "Welcome to the Grimoire!";
 
   let welcomeText = "Welcome to the Grimoire! This website is not associated with the game Blood on the Clock Tower, and is only a helper to the game. Press the Play Button Below to begin.";
   const redirectToWebsite = () => {
