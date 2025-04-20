@@ -8,7 +8,6 @@ const AuthProvider = ({ children }) => {
   const auth = useAuth();
 
   const login = async (credentials) => {
-    console.log("Logging in with credentials:", credentials);
     await auth.login(credentials);
   };
 

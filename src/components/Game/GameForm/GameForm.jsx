@@ -140,7 +140,7 @@ const GameForm = () => {
               onClick={() => {
                 rerollUsers();
                 if (testUsers) {
-                  setPlayerNames(testUsers.map((user) => user.name.first + " " + user.name.last));
+                    setPlayerNames(testUsers.slice(0, numPlayers));
                 }
               }} 
             />

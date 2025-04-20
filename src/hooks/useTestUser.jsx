@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 
-export const useTestUser = (count = 1) => {
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+
+export const useTestUser = (count) => {
   const [testUsers, setTestUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,12 +10,20 @@ export const useTestUser = (count = 1) => {
   const fetchUsers = useCallback(async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`https://randomuser.me/api/?results=${count}`);
+      const response = await fetch(`${API_BASE_URL}/game/get_testusers/${count}`, 
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          },
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch users");
       }
       const data = await response.json();
-      setTestUsers(data.results);
+      setTestUsers(data);
     } catch (err) {
       setError(err.message);
     } finally {
