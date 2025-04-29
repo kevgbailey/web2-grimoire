@@ -7,7 +7,6 @@ import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import "./GameForm.css";
 import RoleAssignmentScreen from "../../RoleAssignmentScreen/RoleAssignmentScreen.jsx";
-import { useTestUser } from "@hooks/useTestUser";
 import { useContext } from "react";
 import { AuthContext } from "@contexts/AuthContext/AuthContext";
 
@@ -38,7 +37,7 @@ import { AuthContext } from "@contexts/AuthContext/AuthContext";
  * @returns {JSX.Element} The rendered component
  */
 const GameForm = () => {
-  const { userId, } = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
   const [step, setStep] = useState(1);
   const [numPlayers, setNumPlayers] = useState(10);
   const [playerNames, setPlayerNames] = useState([]);
@@ -48,6 +47,7 @@ const GameForm = () => {
   const [selectedOutsiders, setSelectedOutsiders] = useState([]);
   const [selectedMinions, setSelectedMinions] = useState([]);
   const [selectedDemons, setSelectedDemons] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleNumPlayersSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +58,6 @@ const GameForm = () => {
 
   const handlePlayerNamesSubmit = (e) => {
     e.preventDefault();
-    // Remove: setSelectedRoles(Array(numPlayers).fill(""));
     setStep(3);
   };
 
@@ -106,8 +105,31 @@ const GameForm = () => {
     }
   };
   
-  //api call found in this custom hook called useTestUser
-  const { testUsers, rerollUsers } = useTestUser(numPlayers);
+  const handleNumPlayersChange = async (e) => {
+    const newCount = Number(e.target.value);
+    setNumPlayers(newCount);
+    setPlayerNames(Array(newCount).fill(""));
+  };
+
+  const handleGenerateTestNames = async () => {
+    setIsLoading(true);
+    
+    try {
+      // Use the randomuser.me API directly
+      const response = await fetch(`https://randomuser.me/api/?results=${numPlayers}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch test users");
+      }
+      
+      const data = await response.json();
+      const names = data.results.map(user => `${user.name.first} ${user.name.last}`);
+      setPlayerNames(names);
+    } catch (error) {
+      console.error("Error fetching test users:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -118,12 +140,12 @@ const GameForm = () => {
           <form className="d-flex flex-column gap-5 align-items-center">
             <input
               type="range"
-              className="custom-range" //no bootstrap here, they don't have much for sliders
+              className="custom-range"
               name="numPlayers"
               min="5"
               max="15"
               defaultValue="10"
-              onChange={(e) => setNumPlayers(Number(e.target.value))}
+              onChange={handleNumPlayersChange}
             />
             <div>
               <Button text="Submit" onClick={handleNumPlayersSubmit} />
@@ -136,22 +158,18 @@ const GameForm = () => {
           <div className="d-flex flex-column justify-content-center align-items-center gap-4">
             <Header text="Enter the names of the players:" />
             <Button 
-              text="Generate Test Names"
-              onClick={() => {
-                rerollUsers();
-                if (testUsers) {
-                  setPlayerNames(testUsers.map((user) => user.name.first + " " + user.name.last));
-                }
-              }} 
+              text={isLoading ? "Loading..." : "Generate Test Names"}
+              onClick={handleGenerateTestNames}
+              disabled={isLoading}
             />
             <form className="d-flex flex-column align-items-center">
-              {playerNames.map((name, index) => (
+              {Array(numPlayers).fill(null).map((_, index) => (
                 <div key={index}>
                   <Input
                     placeholder={`Player ${index + 1}`}
                     id={`playerName${index}`}
                     name={`playerName${index}`}
-                    value={name}
+                    value={playerNames[index] || ""}
                     onChange={(e) => {
                       const newPlayerNames = [...playerNames];
                       newPlayerNames[index] = e.target.value;
